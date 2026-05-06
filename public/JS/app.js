@@ -1,9 +1,10 @@
 /* ==========================================================================
-   CONFIGURACIÓN GLOBAL Y ESTADO
+   CONFIGURACIÓN GLOBAL Y ESTADO - ACTUALIZADO PARA NETLIFY
    ========================================================================== */
-const API_URL = 'http://localhost:3000/api/dinosaurios';
-const LIKES_API_URL = 'http://localhost:3000/api/likes';
-const EXTINCIONES_API_URL = 'http://localhost:3000/api/extinciones'; // Nueva constante para orden
+// Se eliminó 'http://localhost:3000' para usar rutas relativas
+const API_URL = '/api/dinosaurios';
+const LIKES_API_URL = '/api/likes';
+const EXTINCIONES_API_URL = '/api/extinciones'; 
 
 let dinosaurios = [];
 let modoEdicion = false;
@@ -18,9 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     inicializarComponentesVisuales();
     configurarEnlacesExternos();
 
-    // Inicializar funciones específicas de formulario.html
     inicializarReportes();
-    inicializarListadoExtincion(); // Corregido: punto y coma añadido
+    inicializarListadoExtincion();
     inicializarQuiz();
 });
 
@@ -43,7 +43,8 @@ function inicializarReportes() {
             };
 
             try {
-                const response = await fetch('http://localhost:3000/api/reportes', {
+                // Cambio a ruta relativa
+                const response = await fetch('/api/reportes', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(formData)
@@ -76,15 +77,14 @@ async function inicializarListadoExtincion() {
             if (!causa) return;
 
             try {
-                // Enviar a la base de datos
-                const response = await fetch('http://localhost:3000/api/extinciones', {
+                // Cambio a ruta relativa
+                const response = await fetch('/api/extinciones', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ causa: causa })
                 });
 
                 if (response.ok) {
-                    // Si el servidor responde bien, lo agregamos a la vista
                     const nuevoItem = document.createElement('li');
                     nuevoItem.textContent = causa;
                     listaUl.appendChild(nuevoItem);
@@ -96,23 +96,21 @@ async function inicializarListadoExtincion() {
         };
     }
 }
+
 function inicializarQuiz() {
     const btnGuardar = document.getElementById('btnGuardarQuiz');
     const contadorLabel = document.getElementById('contador');
     const checks = document.querySelectorAll('.quiz-check');
 
-    // --- Lógica para el Conteo en Tiempo Real ---
     if (checks.length > 0 && contadorLabel) {
         checks.forEach(input => {
             input.addEventListener('change', () => {
-                // Cuenta cuántos grupos (p1, p2, p3) tienen al menos una opción seleccionada
                 const respondidas = document.querySelectorAll('input[type="radio"]:checked').length;
                 contadorLabel.textContent = respondidas;
             });
         });
     }
 
-    // --- Lógica para Guardar en la Base de Datos ---
     if (btnGuardar) {
         btnGuardar.addEventListener('click', async () => {
             const p1 = document.querySelector('input[name="p1"]:checked')?.value;
@@ -124,11 +122,11 @@ function inicializarQuiz() {
                 return;
             }
 
-            // Estructura de datos según el esquema del backend
             const datosQuiz = { p1, p2, p3 };
 
             try {
-                const response = await fetch('http://localhost:3000/api/quiz', {
+                // Cambio a ruta relativa
+                const response = await fetch('/api/quiz', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(datosQuiz)
@@ -136,7 +134,6 @@ function inicializarQuiz() {
 
                 if (response.ok) {
                     alert("¡Tus respuestas han sido guardadas permanentemente! 🦖");
-                    // Opcional: resetear contador y radios
                 } else {
                     const errorData = await response.json();
                     console.error("Error del servidor:", errorData);
@@ -262,11 +259,9 @@ function renderizarTabla() {
             <td>${d.familia}</td>
             <td>${d.locomocion}</td>
             <td>${d.caracteristicas}</td>
-            <!-- Nueva celda para Sonido -->
             <td>
                 ${d.audio ? `<a href="${d.audio}" target="_blank">🔊 Escuchar</a>` : 'No disponible'}
             </td>
-            <!-- Nueva celda para Acciones -->
             <td>
                 <button onclick="prepararEdicion('${d._id}')">✏️</button>
                 <button onclick="eliminarDinosaurio('${d._id}', '${d.especie}')">🗑️</button>
@@ -282,7 +277,6 @@ window.prepararEdicion = (id) => {
     modoEdicion = true;
     editandoId = id;
 
-    // Verificar existencia antes de asignar (Seguridad)
     const campos = ['especie', 'familia', 'locomocion', 'caracteristicas', 'audioUrl'];
     campos.forEach(campo => {
         const el = document.getElementById(campo);
@@ -291,8 +285,6 @@ window.prepararEdicion = (id) => {
 
     const titulo = document.getElementById('formTitulo');
     if (titulo) titulo.textContent = 'Editando Fósil';
-
-    // Scroll suave al formulario
     document.getElementById('dinoForm')?.scrollIntoView({ behavior: 'smooth' });
 };
 
@@ -321,7 +313,6 @@ window.eliminarDinosaurio = async (id, nombre) => {
    ========================================================================== */
 
 function inicializarComponentesVisuales() {
-    // Botón Volver Arriba
     const btnUp = document.getElementById("btn-ir-arriba");
     if (btnUp) {
         window.addEventListener('scroll', () => {
@@ -330,7 +321,6 @@ function inicializarComponentesVisuales() {
         btnUp.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Galería de Imágenes
     const principal = document.getElementById('imagen-principal');
     const miniaturas = document.querySelectorAll('.miniatura');
     if (principal && miniaturas.length > 0) {
@@ -344,7 +334,6 @@ function inicializarComponentesVisuales() {
         });
     }
 
-    // Carrusel
     const slides = document.getElementById('carruselSlides');
     const btnPrev = document.getElementById('btnPrev');
     const btnNext = document.getElementById('btnNext');
