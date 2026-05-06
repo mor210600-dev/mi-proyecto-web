@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 
 const app = express();
-
+module.exports.handler = serverless(app);
 // Middleware
 app.use(cors());
 app.use(express.json());
