@@ -1,12 +1,8 @@
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/api/:splat"
-  status = 200
-
 [build]
-  command = "cd public/server && npm install"
+  # Si tu package.json principal está en la raíz, usa solo npm install
+  command = "npm install" 
   publish = "public"
 
 [functions]
-  directory = "public/server"
-  external_node_modules = ["express", "mongoose", "serverless-http", "cors", "dotenv"]
+  directory = "public/server" # Donde residen tus archivos .js de Netlify Functions
+  node_bundle = true
