@@ -1,0 +1,12 @@
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+[build]
+  command = "cd public/server && npm install"
+  publish = "public"
+
+[functions]
+  directory = "public/server"
+  external_node_modules = ["express", "mongoose", "serverless-http", "cors", "dotenv"]
