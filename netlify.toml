@@ -1,8 +1,12 @@
 [build]
-  # Si tu package.json principal está en la raíz, usa solo npm install
-  command = "npm install" 
+  # Cambiamos el comando para que solo instale lo de la carpeta server
+  command = "cd server && npm install"
   publish = "public"
 
 [functions]
-  directory = "public/server" # Donde residen tus archivos .js de Netlify Functions
-  node_bundle = true
+  directory = "server"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
