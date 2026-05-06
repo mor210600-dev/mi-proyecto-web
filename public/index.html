@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinosaurios: Noticias, Fotos y Nuevos Fósiles</title>
+  <link rel="stylesheet" href="CSS/Estilos.css">
+</head>
+
+<body>
+
+  <header class="encabezado-fijo">
+    <div class="contenedor-header">
+      <h1>DinoCiencia</h1>
+
+      <nav class="menu-navegacion" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="Registros.html">Registros</a>
+        <a href="formulario.html">Formulario</a>
+        <a href="Habitat.html">Hábitat</a>
+      </nav>
+
+      <div class="theme-switch-wrapper">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema (oscuro/claro)"
+          title="Cambiar tema">
+          <!-- Icono de Sol (Claro) -->
+          <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+            <mask class="moon-mask" id="moon-mask">
+              <rect x="0" y="0" width="100%" height="100%" fill="white" />
+              <circle cx="24" cy="10" r="6" fill="black" />
+            </mask>
+            <circle class="sun-main" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+            <g class="sun-beams" stroke="currentColor">
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </g>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <!-- Sección Hero -->
+    <section class="hero">
+      <h2>Bienvenidos a la Enciclopedia Digital</h2>
+      <p>Explora el fascinante mundo de los reptiles prehistóricos.</p>
+    </section>
+
+    <!-- Artículo Principal -->
+    <article id="teropodos">
+      <h2>Dinosaurios terópodos: estos son los primeros fósiles</h2>
+      <p>
+        Los dinosaurios terópodos fueron un grupo de dinosaurios bípedos y carnívoros, entre los que es conocido el
+        T-Rex.
+        Descubre aquí cuáles fueron los primeros fósiles que se encontraron de cada familia.
+        Más información en <a
+          href="https://www.nationalgeographic.com.es/mundo-animal/dinosaurios-teropodos-estos-son-primeros-fosiles_20117"
+          target="_blank" rel="noopener">National Geographic</a>.
+      </p>
+    </article>
+
+    <!-- Sección de Temas Relacionados -->
+    <section id="listas">
+      <h3>Temas relacionados</h3>
+      <dl>
+        <dt><strong>'Jurassic Park' y el Dilophosaurus</strong></dt>
+        <dd>
+          Nuevos descubrimientos fósiles han sacado a la luz la primera imagen clara de cómo era realmente el dinosaurio
+          crestado.
+          <a href="https://www.nationalgeographic.com.es/mundo-animal/jurassic-park-refleja-erroneamente-casi-todo-lo-que-muestra-de-este-iconico-dinosaurio_25768"
+            target="_blank" rel="noopener">Leer más</a>.
+        </dd>
+
+        <dt><strong>La garra gigante de Mongolia</strong></dt>
+        <dd>
+          Una nueva especie de terizinosaurio desafía la evolución tras encontrar una garra completa bien conservada.
+          <a href="https://www.nationalgeographic.com.es/ciencia/descubren-garra-dinosaurio-completa-mas-grande-mundo-y-que-desconcierta-a-cientificos_24592"
+            target="_blank" rel="noopener">Leer más</a>.
+        </dd>
+
+        <dt><strong>El origen en Gondwana</strong></dt>
+        <dd>
+          Un nuevo fósil de 230 millones de años pone en entredicho el origen geográfico de estos animales.
+          <a href="https://www.nationalgeographic.com.es/ciencia/dinosaurios-no-surgieron-solo-gondwana-nuevo-fosil-cambia-todo_24017"
+            target="_blank" rel="noopener">Leer más</a>.
+        </dd>
+      </dl>
+    </section>
+
+    <hr>
+
+    <!-- Galería de Imágenes -->
+    <section class="galeria-seccion">
+      <header>
+        <h2 class="titulo">Galería de Gigantes Prehistóricos</h2>
+        <p class="descripcion">Explora a los protagonistas del Mesozoico:</p>
+      </header>
+
+      <div class="galeria-2x2">
+        <figure class="tarjeta">
+          <img
+            src="https://cdn0.ecologiaverde.com/es/posts/7/6/5/dinosaurios_carnivoros_nombres_tipos_caracteristicas_e_imagenes_2567_600.webp"
+            alt="T-Rex" class="imagen">
+          <figcaption class="pie-foto">Tyrannosaurus rex en su hábitat boscoso</figcaption>
+        </figure>
+
+        <figure class="tarjeta">
+          <img src="https://www.mundoprehistorico.com/wp-content/uploads/Triceratops-01.jpg.webp" alt="Triceratops"
+            class="imagen">
+          <figcaption class="pie-foto">Triceratops en las llanuras del Cretácico</figcaption>
+        </figure>
+
+        <figure class="tarjeta">
+          <img
+            src="https://cdn.agenciasinc.es/var/ezwebin_site/storage/images/_aliases/img_1col/noticias/asi-logro-cazar-bajo-el-agua-el-spinosaurus-el-dinosaurio-carnivoro-mas-grande-del-mundo/9434179-1-esl-MX/Asi-logro-cazar-bajo-el-agua-el-Spinosaurus-el-dinosaurio-carnivoro-mas-grande-del-mundo.jpg"
+            alt="Spinosaurus" class="imagen">
+          <figcaption class="pie-foto">Spinosaurus: El depredador de las costas</figcaption>
+        </figure>
+
+        <figure class="tarjeta">
+          <img src="https://unamglobal.unam.mx/wp-content/uploads/2024/03/sauropodos001-1024x605.jpg"
+            alt="Brachiosaurus" class="imagen">
+          <figcaption class="pie-foto">Saurópodos gigantes en entornos áridos</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Citas y Referencias -->
+    <section id="citas">
+      <blockquote cite="https://www.paleontology.org">
+        <p>"La extinción marcó el fin de los dinosaurios no aviarios."</p>
+        <footer>— <cite>Revista de Paleontología</cite></footer>
+      </blockquote>
+      <p>Ian Malcolm dijo: <q>La vida se abre camino.</q></p>
+    </section>
+  </main>
+
+  <!-- Navegación auxiliar -->
+  <button id="btn-ir-arriba" title="Volver arriba">&#11165;</button>
+
+  <!-- Pie de Página -->
+  <footer id="pie-pagina">
+    <p>&copy; 2026 Expedición Paleontológica Digital. Todos los derechos reservados.</p>
+    <div class="seccion-likes">
+      <span>¿Te gusta este sitio?</span>
+      <button class="btn-like" id="btn-like">&#10084; <span id="texto-like">Me gusta</span></button>
+      <span id="contador-likes">0</span>
+    </div>
+  </footer>
+
+  <script src="JS/app.js"></script>
+</body>
+
+</html>

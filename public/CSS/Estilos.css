@@ -1,0 +1,810 @@
+/* =========================================
+   VARIABLES Y TEMAS (Custom Properties)
+   ========================================= */
+:root {
+    /* Tema Claro (Predeterminado) */
+    --color-primario: #2c5d33;
+    /* Verde Selva */
+    --color-secundario: #8b5a2b;
+    /* Marrón Tierra */
+    --color-acento: #e67e22;
+    /* Naranja Fósil */
+    --fondo-cuerpo: #f4f1ea;
+    /* Color crema/papel */
+    --fondo-tarjeta: #ffffff;
+    /* Blanco puro */
+    --texto-principal: #2c3e50;
+    --texto-suave: #555555;
+    --borde: #dddddd;
+    --sombra: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --transicion: all 0.3s ease;
+}
+
+/* Variables para Modo Oscuro */
+[data-theme='dark'] {
+    --fondo-cuerpo: #121212;
+    --fondo-tarjeta: #1e1e1e;
+    --texto-principal: #e0e0e0;
+    --texto-suave: #b0b0b0;
+    --color-primario: #4a8c54;
+    --borde: #333333;
+    --sombra: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================================
+   RESETEO Y BASE
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: var(--fondo-cuerpo);
+    color: var(--texto-principal);
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* =========================================
+   ENCABEZADO (Header)
+   ========================================= */
+.encabezado-fijo {
+    background-color: var(--color-primario);
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--sombra);
+}
+
+.contenedor-header {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-navegacion a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 500;
+    transition: var(--transicion);
+}
+
+.menu-navegacion a:hover {
+    color: var(--color-acento);
+}
+
+/* Botón de Cambio de Tema */
+[data-theme='dark'] td {
+    color: var(--texto-suave);
+}
+
+[data-theme='dark'] tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.theme-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(15deg);
+}
+
+/* =========================================
+   CONTENIDO PRINCIPAL (Grid)
+   ========================================= */
+.contenido-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    width: 90%;
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+
+/* Artículo de Texto */
+.seccion-texto {
+    background-color: var(--fondo-tarjeta);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+
+.seccion-texto h2 {
+    color: var(--color-primario);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    border-left: 5px solid var(--color-acento);
+    padding-left: 15px;
+}
+
+.seccion-texto p {
+    margin-bottom: 1.2rem;
+    text-align: justify;
+    color: var(--texto-suave);
+}
+
+/* Barra Lateral (Aside) */
+.galeria-seccion {
+    background-color: var(--fondo-tarjeta);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+    height: fit-content;
+}
+
+.galeria-seccion h3 {
+    margin-bottom: 1rem;
+    color: var(--color-secundario);
+    border-bottom: 2px solid var(--borde);
+    padding-bottom: 5px;
+}
+
+/* =========================================
+   COMPONENTES VISUALES
+   ========================================= */
+
+/* Carrusel */
+.carrusel-contenedor {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.carrusel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carrusel-item {
+    min-width: 100%;
+    position: relative;
+}
+
+.carrusel-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.carrusel-caption {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    width: 100%;
+    padding: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.carrusel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    z-index: 10;
+}
+
+.carrusel-control.next {
+    right: 0;
+}
+
+/* Galería Interactiva */
+.imagen-principal-contenedor img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border: 1px solid var(--borde);
+}
+
+.miniaturas-contenedor {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.miniatura {
+    width: 22%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 4px;
+    opacity: 0.6;
+    transition: var(--transicion);
+    border: 2px solid transparent;
+}
+
+.miniatura:hover,
+.miniatura.activa {
+    opacity: 1;
+    border-color: var(--color-acento);
+}
+
+/* Sección de Video */
+.seccion-video {
+    grid-column: 1 / -1;
+    background-color: var(--fondo-tarjeta);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+    margin-top: 1rem;
+}
+
+.video-contenedor {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* Ratio 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.video-contenedor iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* =========================================
+   FOOTER Y BOTONES
+   ========================================= */
+#pie-pagina {
+    background-color: var(--color-primario);
+    color: white;
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin-top: 4rem;
+}
+
+.seccion-likes {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-like {
+    background-color: var(--color-acento);
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: var(--transicion);
+}
+
+.btn-like:hover {
+    background-color: #d35400;
+    transform: scale(1.1);
+}
+
+#btn-ir-arriba {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--color-secundario);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    /* Se activa con JS */
+    font-size: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+/* =========================================
+   RESPONSIVE (Adaptabilidad)
+   ========================================= */
+@media (max-width: 992px) {
+    .contenido-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .contenedor-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .menu-navegacion {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .menu-navegacion a {
+        margin: 0 5px;
+        font-size: 0.9rem;
+    }
+}
+
+/* =========================================
+   ESTILOS ESPECÍFICOS PARA FORMULARIO.HTML
+   ========================================= */
+
+/* --- Sección de Contacto (Reporte) --- */
+#contacto {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--fondo-tarjeta);
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+
+#titulo-formulario {
+    text-align: center;
+    color: var(--color-primario);
+    margin-bottom: 1.5rem;
+}
+
+fieldset {
+    border: 2px solid var(--borde);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+legend {
+    padding: 0 10px;
+    font-weight: bold;
+    color: var(--color-secundario);
+    font-size: 1.1rem;
+}
+
+.campo {
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.campo label {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.campo input,
+.campo textarea {
+    padding: 12px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    background-color: var(--fondo-cuerpo);
+    color: var(--texto-principal);
+    font-family: inherit;
+    transition: var(--transicion);
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: var(--color-acento);
+    box-shadow: 0 0 5px rgba(230, 126, 34, 0.3);
+}
+
+/* --- Botones --- */
+.btn-primario {
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    width: 100%;
+    transition: var(--transicion);
+}
+
+.btn-primario:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+/* --- Lista Dinámica de Extinción --- */
+.seccion-dinamica {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--fondo-tarjeta);
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--borde);
+    border-radius: 4px;
+}
+
+#btnAgregar {
+    background-color: var(--color-secundario);
+    color: white;
+    border: none;
+    padding: 0 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#listaEspecies {
+    list-style: none;
+}
+
+#listaEspecies li {
+    padding: 10px;
+    border-bottom: 1px solid var(--borde);
+    color: var(--texto-suave);
+}
+
+/* --- Quiz Paleontológico --- */
+.seccion-quiz {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--fondo-tarjeta);
+    border-radius: 12px;
+}
+
+.progreso {
+    background: var(--fondo-cuerpo);
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.pregunta-grupo {
+    border: none;
+    border-left: 4px solid var(--color-acento);
+    background: rgba(230, 126, 34, 0.05);
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.pregunta-grupo legend {
+    margin-bottom: 10px;
+    color: var(--texto-principal);
+}
+
+.quiz-check {
+    margin-right: 8px;
+    accent-color: var(--color-acento);
+}
+
+/* Mensajes de Status */
+.mensaje-status {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* =========================================
+   ESTILOS PARA PÁGINA DE REGISTROS
+   ========================================= */
+
+main h2 {
+    text-align: center;
+    color: var(--color-primario);
+    margin: 2rem 0;
+}
+
+/* --- Formulario de Registro --- */
+.contenedor-formulario {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#dinoForm {
+    background-color: var(--fondo-tarjeta) !important;
+    /* Sobreescribe el inline style */
+    box-shadow: var(--sombra);
+    border: 1px solid var(--borde);
+    transition: var(--transicion);
+}
+
+#dinoForm input,
+#dinoForm select {
+    padding: 10px;
+    border: 1px solid var(--borde);
+    border-radius: 5px;
+    background-color: var(--fondo-cuerpo);
+    color: var(--texto-principal);
+    flex: 1 1 200px;
+    /* Diseño responsivo para los inputs */
+}
+
+.botones-form {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.btn-guardar {
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: var(--transicion);
+}
+
+.btn-guardar:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+}
+
+.btn-cancelar {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* --- Tabla de Registros --- */
+.contenedor-tabla {
+    width: 95%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    overflow-x: auto;
+    /* Scroll horizontal en móviles */
+    background-color: var(--fondo-tarjeta);
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+thead {
+    background-color: var(--color-primario);
+    color: white;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--borde);
+}
+
+tbody tr:hover {
+    background-color: rgba(44, 93, 51, 0.05);
+}
+
+/* --- Mensajes de Feedback --- */
+.mensaje {
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    animation: fadeIn 0.5s ease;
+}
+
+.mensaje-exito {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ajustes específicos para Modo Oscuro en la tabla */
+body.dark-mode td {
+    color: var(--texto-suave);
+}
+
+body.dark-mode tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================
+   ESTILOS PARA PÁGINA DE INICIO (INDEX)
+   ========================================= */
+
+.contenedor {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 5%;
+}
+
+/* --- Sección Hero --- */
+/* --- Sección Hero con Textura Verdosa --- */
+.hero {
+    /* Combinación de degradado verdoso y textura de ruido sutil */
+    background:
+        linear-gradient(rgba(44, 93, 51, 0.8), rgba(20, 40, 25, 0.9)),
+        url('https://www.transparenttextures.com/patterns/carbon-fibre.png'),
+        /* Textura opcional */
+        url('https://images.unsplash.com/photo-1517930266914-774f35835697?q=80&w=2070&auto=format&fit=crop');
+
+    background-size: cover, auto, cover;
+    background-position: center;
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 3rem;
+    box-shadow: var(--sombra);
+    border: 1px solid var(--color-primario);
+    /* Refuerza el borde con el verde selva */
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+    /* Resaltar sobre el fondo oscuro */
+}
+
+/* --- Artículos y Listas (Temas Relacionados) --- */
+#teropodos,
+#listas {
+    background-color: var(--fondo-tarjeta);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: var(--sombra);
+    transition: var(--transicion);
+}
+
+#teropodos h2,
+#listas h3 {
+    color: var(--color-primario);
+    margin-bottom: 1.5rem;
+    border-left: 5px solid var(--color-acento);
+    padding-left: 15px;
+}
+
+#listas dt {
+    color: var(--color-secundario);
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+}
+
+#listas dd {
+    margin-left: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--texto-suave);
+}
+
+#listas a,
+#teropodos a {
+    color: var(--color-acento);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#listas a:hover {
+    text-decoration: underline;
+}
+
+/* --- Galería de Gigantes (Grid 2x2) --- */
+.galeria-2x2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 1.5rem;
+}
+
+.tarjeta {
+    background-color: var(--fondo-tarjeta);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    margin: 0;
+    /* Reseteo de figure */
+    transition: var(--transicion);
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+}
+
+.imagen {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.pie-foto {
+    padding: 15px;
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--texto-suave);
+    font-style: italic;
+}
+
+/* --- Citas y Quotes --- */
+#citas {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+blockquote {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--color-secundario);
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    padding: 0 40px;
+}
+
+blockquote::before {
+    content: "“";
+    font-size: 4rem;
+    position: absolute;
+    left: 0;
+    top: -20px;
+    opacity: 0.3;
+}
+
+blockquote footer {
+    font-size: 1rem;
+    color: var(--texto-suave);
+    margin-top: 10px;
+}
+
+/* --- Adaptabilidad Móvil --- */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+
+    .contenedor {
+        padding: 0 15px;
+    }
+}

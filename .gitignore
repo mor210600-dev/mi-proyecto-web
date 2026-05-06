@@ -1,0 +1,12 @@
+# Variables de entorno (Contiene tus contraseñas de MongoDB)
+.env
+
+# Dependencias de Node (Carpeta muy pesada que no se debe subir)
+node_modules/
+
+# Archivos del sistema y logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
