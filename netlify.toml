@@ -1,6 +1,5 @@
 [build]
-  # Si tu package.json principal está en la raíz, usa solo npm install
-  command = "npm install" 
+  command = "cd server && npm install"
   publish = "public"
 
 [functions]
