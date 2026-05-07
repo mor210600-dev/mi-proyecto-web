@@ -165,6 +165,18 @@ if (btnGuardarQuiz) {
     });
 }
 
+async function cargarEspeciesEnLista() {
+    const listaUl = document.getElementById('listaEspecies');
+    if (!listaUl) return;
+
+    try {
+        const res = await fetch(API_URL);
+        const datos = await res.json();
+        listaUl.innerHTML = datos.map(d => `<li>${d.especie} - <small>${d.familia}</small></li>`).join('');
+    } catch (error) {
+        console.error("Error cargando especies:", error);
+    }
+}
 // --- 5. INICIALIZACIÓN ---
 
 document.addEventListener('DOMContentLoaded', () => {
