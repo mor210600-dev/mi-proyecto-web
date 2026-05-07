@@ -108,6 +108,37 @@ async function gestionarLikes() {
         } catch (err) { console.error("No se pudo dar like"); }
     });
 }
+    // Galería de Imágenes
+    const principal = document.getElementById('imagen-principal');
+    const miniaturas = document.querySelectorAll('.miniatura');
+    if (principal && miniaturas.length > 0) {
+        miniaturas.forEach(min => {
+            min.onclick = function() {
+                principal.src = this.src;
+                principal.alt = this.alt;
+                miniaturas.forEach(m => m.classList.remove('activa'));
+                this.classList.add('activa');
+            };
+        });
+    }
+
+    // Carrusel
+    const slides = document.getElementById('carruselSlides');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    if (slides && btnPrev && btnNext) {
+        let index = 0;
+        const items = document.querySelectorAll('.carrusel-item');
+        const totalSlides = items.length;
+
+        const mover = (step) => {
+            index = (index + step + totalSlides) % totalSlides;
+            slides.style.transform = `translateX(${-index * 100}%)`;
+        };
+
+        btnNext.onclick = () => mover(1);
+        btnPrev.onclick = () => mover(-1);
+    }
 
 // --- 3. TEMA OSCURO / CLARO ---
 
